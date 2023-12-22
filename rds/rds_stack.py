@@ -34,7 +34,7 @@ class RdsStack(Stack):
             max_allocated_storage=100,
             port=3306,
             # storage_throughput=125,
-            subnet_group=subnet_group,
+            subnet_group=subnet_group, 
             # Generate the secret with admin username `postgres` and random password
             # credentials=rds.Credentials.from_generated_secret("postgres"),
             vpc=vpc
