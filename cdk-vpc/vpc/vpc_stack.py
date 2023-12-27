@@ -16,5 +16,5 @@ class VpcStack(Stack):
             max_azs=2,
             nat_gateways=1,
             reserved_azs=0,
-            vpc_name="Shreeyash-cdk-vp1" 
+            vpc_name="Shreeyash-cdk-vpc" 
         )
