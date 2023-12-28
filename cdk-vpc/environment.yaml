@@ -1,0 +1,10 @@
+vpc:
+  - name: staging
+    region: ap-south-1
+    account: "221192224682"
+    cidr: "10.11.0.0/16"
+
+  - name: dev
+    region: ap-south-1
+    account: "221192224682"
+    cidr: "10.10.0.0/16"
