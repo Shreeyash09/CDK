@@ -1,7 +1,8 @@
 from aws_cdk import (
     # Duration,
     Stack,
-    aws_ec2 as ec2    
+    aws_ec2 as ec2,
+    aws_cloudformation as cfn    
     # aws_sqs as sqs,
 )
 from constructs import Construct
@@ -40,4 +41,22 @@ class VpcStack(Stack):
                     cidr_mask=22,
                 ),
             ],
-        )
+            )
+        # CreateRoutetable from vpc         
+        route_table = ec2.CfnRouteTable(self, "MyCfnRouteTable",
+                                vpc_id=vpc.vpc_id
+            )
+        # CreateRoute from subnets
+        cfn_subnet_route_table_association = ec2.CfnSubnetRouteTableAssociation(self, "MyCfnSubnetRouteTableAssociation",
+                route_table_id=route_table.attr_route_table_id,
+                subnet_id=vpc.private_subnets[0].subnet_id
+            )        
+        # route = ec2.CfnRoute(self, "Route", 
+        #             route_table_id=route_table.attr_route_table_id,
+        #             destination_cidr_block="169.10.0.0/22",
+        #             nat_gateway_id="nat-07d38e933babbc9b2"
+        #   )
+        
+
+
+        
